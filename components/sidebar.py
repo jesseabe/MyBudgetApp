@@ -17,16 +17,16 @@ import numpy as np
 import pandas as pd
 from globals import *
 
-df_cat_receita = pd.read_csv("components/data/df_cat_receita.csv")
-cat_receita = df_cat_receita['Categoria'].tolist()
+#df_cat_receita = pd.read_csv("C:\\Users\\Rodrigo\\Desktop\\Dash - Rodrigo Vanzelotti\\MyBudget\\MyBudget\\df_cat_receita.csv")
+#cat_receita = df_cat_receita['Categoria'].tolist()
 
-df_cat_despesa = pd.read_csv("components/data/df_cat_despesa.csv")
-cat_despesa = df_cat_despesa['Categoria'].tolist()
+#df_cat_despesa = pd.read_csv("C:\\Users\\Rodrigo\\Desktop\\Dash - Rodrigo Vanzelotti\\MyBudget\\MyBudget\\df_cat_despesa.csv")
+#cat_despesa = df_cat_despesa['Categoria'].tolist()
 
 # ========= Layout ========= #
 layout = dbc.Card([
                 html.H1("MyBudget", className="text-primary"),
-                html.P("By FinanceApp", className="text-info"),
+                html.P("By Jessé", className="text-info"),
                 html.Hr(),
 
 
@@ -487,9 +487,9 @@ def salve_form_despesa(n, valor, switches, descricao, date, txt, dict_despesas):
     df_despesas = pd.DataFrame(dict_despesas)
 
     if n and not(valor == "" or valor== None):
-        valor = round(valor, 2)
+        valor = round(float(valor), 2)
         date = pd.to_datetime(date).date()
-        categoria = categoria[0] if type(categoria) == list else categoria
+        categoria = txt[0] if type(txt) == list else txt
 
         recebido = 1 if 1 in switches else 0
         fixo = 0 if 2 in switches else 0
